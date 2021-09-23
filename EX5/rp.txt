@@ -1,0 +1,18 @@
+ void  updateClockBuffer(){
+	 if(hour/10 !=1 && hour/10 != 2){
+		 led_buffer[0]=0;
+	 }else {led_buffer[0]=hour/10;}
+	 led_buffer[1]=hour%10;
+	 if(minute<10){
+		 led_buffer[2]=0;
+		 led_buffer[3]=minute;
+	 }else if(minute>=10){
+		 led_buffer[2]=minute/10;
+		 led_buffer[3]=minute%10;
+	 }else if(minute==0){
+		 led_buffer[2]=0;
+		 led_buffer[3]=0;
+	 }
+	 update7SEG(index_led++);
+	 if(index_led>=MAX_LED) index_led=0;
+ }
